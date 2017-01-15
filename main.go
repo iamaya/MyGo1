@@ -56,4 +56,5 @@ myMap[2] = "Second"
 
 fmt.Println(myMap)
 
+fmt.Println(myMap[100])
 }
