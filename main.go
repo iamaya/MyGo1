@@ -107,5 +107,42 @@ if k>15 {
 }
 }
 
+println("********** Complex for statements ************")
+
+g := make(map[string]string)
+
+g["first"] = "one"
+g["second"] = "two"
+g["third"] = "three"
+
+
+for idx,val := range g{
+    fmt.Printf (" Key is %s | Value is %s || ", idx, val)
 }
 
+var inputval string
+fmt.Scanln(&inputval )
+
+fmt.Printf ("You typed - %s \n \n", inputval)
+
+println("***** Functions ***********")
+
+callMe("Hello", "World", "Good Morning")
+
+}
+
+func callMe(messages ...string)  {
+    for _, message:= range messages{
+        println(message)
+        println("---")
+    }
+
+    param := "Parameter"
+    passpointer(&param)
+    println(param)
+}
+
+func passpointer(param *string)  {
+    println(*param)
+    *param = "Something else"
+}
