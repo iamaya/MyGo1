@@ -1,148 +1,153 @@
 package main
+
 import "fmt"
 
-
-const  (
-first = "some"
-second ="second value"
-
+const (
+	first  = "some"
+	second = "second value"
 )
 
 func main() {
 
-//println(second)
+	//println(second)
 
 	/*println("Hello...Go")
 
-    var myint int
-    myint= 50
+	  var myint int
+	  myint= 50
 
-    println(myint)
+	  println(myint)
 
-    myString := "this is a string"
+	  myString := "this is a string"
 
-    println(myString); println(myint)
+	  println(myString); println(myint)
 
-    myComplex := complex(5,10)
+	  myComplex := complex(5,10)
 
-    println(myComplex) ; println(real(myComplex))*/
+	  println(myComplex) ; println(real(myComplex))*/
 
-    myArray := [...] int {5,10,15,20}
+	myArray := [...]int{5, 10, 15, 20}
 
-    mySlice := myArray[:]
+	mySlice := myArray[:]
 
-    mySlice[1] = 55
+	mySlice[1] = 55
 
-fmt.Println(mySlice)
-    mySlice = append(mySlice, 100)
+	fmt.Println(mySlice)
+	mySlice = append(mySlice, 100)
 
+	fmt.Println(myArray)
+	fmt.Println(mySlice)
 
-fmt.Println(myArray)
-fmt.Println(mySlice)
+	newSlice := []int{3, 4, 5, 6}
 
+	fmt.Println(newSlice)
+	fmt.Println(len(newSlice))
 
-newSlice := []int{3,4,5,6}
+	println("*********** Example for make() function ***********")
 
-fmt.Println(newSlice)
-fmt.Println(len(newSlice))
+	slice2 := make([]int, 15)
+	slice2[0] = 1
+	slice2[1] = 2
 
-println("*********** Example for make() function ***********")
+	fmt.Println(slice2)
 
-slice2 := make([]int, 15)
-slice2[0] = 1
-slice2[1] = 2
+	println("********* Example map() make() *****")
 
-fmt.Println(slice2)
+	string2 := make(map[int]string, 2)
 
+	string2[0] = "1222"
+	string2[1] = "2222"
+	string2[2] = "3222"
+	string2[3] = "4222"
 
-println("********* Example map() make() *****")
+	fmt.Println(string2)
 
-string2 := make(map[int] string, 2)
+	fmt.Println("********** MAP  ***********")
 
-string2[0] = "1222"
-string2[1] = "2222"
-string2[2] = "3222"
-string2[3] = "4222"
+	myMap := make(map[int]string)
 
+	myMap[1] = "First"
+	myMap[2] = "Second"
 
-fmt.Println(string2)
+	fmt.Println(myMap)
 
-fmt.Println("********** MAP  ***********")
+	fmt.Println(myMap[100])
 
-myMap := make(map[int]string)
+	fmt.Println("*************** Branching *************")
 
-myMap[1] = "First"
-myMap[2] = "Second"
+	i := 5
+	if i == 0 {
+		fmt.Println("i is 0")
+	} else {
+		fmt.Println("i is not 0")
+	}
 
-fmt.Println(myMap)
+	if j := 5; j <= 6 {
+		fmt.Println("j is less than 6")
+	}
 
-fmt.Println(myMap[100])
+	println("********** For Loop **********")
 
-fmt.Println("*************** Branching *************")
+	for t := 1; t <= 5; t++ {
+		println(t)
+	}
 
-i := 5
-if i == 0 {
-    fmt.Println("i is 0")
-} else  {
-    fmt.Println("i is not 0")
-}
+	k := 10
+	for {
+		k++
+		println(k)
 
-if j :=5; j <=6{
-    fmt.Println("j is less than 6")
-}
+		if k > 15 {
+			break
+		}
+	}
 
-println("********** For Loop **********")
+	println("********** Complex for statements ************")
 
-for t:=1; t<=5; t++ {
-    println(t)
-}
+	g := make(map[string]string)
 
-k:=10
-for{
-    k++
-    println(k)
+	g["first"] = "one"
+	g["second"] = "two"
+	g["third"] = "three"
 
-if k>15 {
-    break
-}
-}
+	for idx, val := range g {
+		fmt.Printf(" Key is %s | Value is %s || ", idx, val)
+	}
 
-println("********** Complex for statements ************")
+	//var inputval string
+	//	fmt.Scanln(&inputval)
 
-g := make(map[string]string)
+	//	fmt.Printf("You typed - %s \n \n", inputval)
 
-g["first"] = "one"
-g["second"] = "two"
-g["third"] = "three"
+	println("\n***** Functions ***********")
 
+	callMe("Hello", "World", "Good Morning")
 
-for idx,val := range g{
-    fmt.Printf (" Key is %s | Value is %s || ", idx, val)
-}
-
-var inputval string
-fmt.Scanln(&inputval )
-
-fmt.Printf ("You typed - %s \n \n", inputval)
-
-println("***** Functions ***********")
-
-callMe("Hello", "World", "Good Morning")
+	countTerms, sum := add(1, 3, 5, 9)
+	println("Count Term :", countTerms, " | Sum :", sum)
 
 }
 
-func callMe(messages ...string)  {
-    for _, message:= range messages{
-        println(message)
-        println("---")
-    }
+func callMe(messages ...string) {
+	for _, message := range messages {
+		println(message)
+		println("---")
+	}
 
-    param := "Parameter"
-    passpointer(&param)
-    println(param)
+	param := "Parameter"
+	passpointer(&param)
+	println(param)
 }
 
-func passpointer(param *string)  {
-    println(*param)
-    *param = "Something else"
+func passpointer(param *string) {
+	println(*param)
+	*param = "Something else"
+}
+
+func add(terms ...int) (int, int) {
+	results := 0
+	for _, term := range terms {
+		results += term
+	}
+	return len(terms), results
 }
